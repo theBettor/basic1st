@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         // TODO("activity_main.xml에 작성되어 있는 spartaTextView를 findViewById를 사용하여 textView라는 TextView 타입의 변수에 할당하기)
         val textView = findViewById<TextView>(R.id.spartaTextView)
 
+        // findviewbyid 다른 사람들은 어떻게 하는지, 공식문서 sample
 
         /*job = lifecycleScope.launch {
             var i = 1
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
             // 아래 /*...*/ 안에 코드를 작성하세요.
             for (i in 1..100) {
                 if (isActive) {
-                    textView.text = i.toString()
+                    textView.text = i.toString() // 여기 text에 갖다대면 getText가 숨겨져 있는데 코틀린은 앞에 수식어를 붙히지 않아도 된다고 함.
                     delay(500)
                 }
             }
@@ -90,16 +91,16 @@ class MainActivity : AppCompatActivity() {
         val randomTextView = findViewById<TextView>(R.id.textViewRandom)
 
         // TODO("if문 사용해보기 - 위에서 2개의 변수를 작성완료하고 나면 textView의 값과 randomTextView의 값이 같은지 다른지를 확인하여 Toast 띄우기")
-//        if (textView == randomTextView) {
-//            Toast.makeText(this, "같다", Toast.LENGTH_SHORT).show()
-//        } else {
-//            Toast.makeText(this, "틀립니다", Toast.LENGTH_SHORT).show()
-//        }
-        if (textView == randomTextView) {
-            Toast.makeText(this, "통과", Toast.LENGTH_SHORT).show()
-        } else if (textView != randomTextView){
-            Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
+        if (textView.text == randomTextView.text) { // view끼리 당연히 비교할 수가 없지 이거는 text
+            Toast.makeText(this, "같다", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "틀립니다", Toast.LENGTH_SHORT).show()
         }
+//        if (textView == randomTextView) {
+//            Toast.makeText(this, "통과", Toast.LENGTH_SHORT).show()
+//        } else if (textView != randomTextView){
+//            Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
+//        }
         /**
          * Toast 사용 예)
          * Toast.makeText(this, "메세지", Toast.LENGTH_SHORT).show() // Toast.LENGTH_SHORT 대신 Toast.LENGTH_LONG 또한 사용 가능
