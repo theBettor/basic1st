@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         val randomValue = Random.nextInt(1, 101)
         // TODO("위 random으로 구한 값을 randomTextView에 세팅하여 화면에 보여주도록 하기")
 //        randomTextView.setText("randomValue")
+        randomTextView.text = randomValue.toString() // 와 밑에 코드에서 갖고와서 좀 바꿧는데 이게 되네 ㅋㅋ ㅠ
     }
 
     private fun setJobAndLaunch() {
@@ -73,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             // 아래 /*...*/ 안에 코드를 작성하세요.
             for (i in 1..100) {
                 if (isActive) {
-                    /*...*/
+                    textView.text = i.toString()
                     delay(500)
                 }
             }
@@ -89,8 +90,15 @@ class MainActivity : AppCompatActivity() {
         val randomTextView = findViewById<TextView>(R.id.textViewRandom)
 
         // TODO("if문 사용해보기 - 위에서 2개의 변수를 작성완료하고 나면 textView의 값과 randomTextView의 값이 같은지 다른지를 확인하여 Toast 띄우기")
+//        if (textView == randomTextView) {
+//            Toast.makeText(this, "같다", Toast.LENGTH_SHORT).show()
+//        } else {
+//            Toast.makeText(this, "틀립니다", Toast.LENGTH_SHORT).show()
+//        }
         if (textView == randomTextView) {
-            Toast.makeText(this, "같다", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "통과", Toast.LENGTH_SHORT).show()
+        } else if (textView != randomTextView){
+            Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
         }
         /**
          * Toast 사용 예)
