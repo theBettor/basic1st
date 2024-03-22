@@ -96,11 +96,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "틀립니다", Toast.LENGTH_SHORT).show()
         }
-//        if (textView == randomTextView) {
-//            Toast.makeText(this, "통과", Toast.LENGTH_SHORT).show()
-//        } else if (textView != randomTextView){
-//            Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
-//        }
+
         /**
          * Toast 사용 예)
          * Toast.makeText(this, "메세지", Toast.LENGTH_SHORT).show() // Toast.LENGTH_SHORT 대신 Toast.LENGTH_LONG 또한 사용 가능
