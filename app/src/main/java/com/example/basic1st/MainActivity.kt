@@ -14,9 +14,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var spartTextView: TextView
+    private lateinit var textViewRandom: TextView
     private var job: Job? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +31,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        spartTextView = findViewById(R.id.spartaTextView)
+        textViewRandom = findViewById(R.id.textViewRandom)
         setupButton()
         setRandomValueBetweenOneToHundred()
         setJobAndLaunch()
@@ -46,10 +52,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setRandomValueBetweenOneToHundred() {
         // TODO("activity_main.xml에 작성되어 있는 textViewRandom을 findViewById를 사용하여 randomTextView라는 TextView 타입의 변수에 할당하기)
-        val randomTextView = findViewById<TextView>(R.id.textViewRandom)
+        val randomTextView = textViewRandom
 
         // TODO("Kotlin Random을 찾아보고 1이상 100이하의 숫자를 랜덤으로 구하여 Int 타입의 randomValue라는 변수에 할당하는 코드 작성하기")
-        val randomValue = Random.nextInt(1, 101)
+//        val randomValue = Random.nextInt(1, 101)
+        val randomValue = (1..100).random()
         // TODO("위 random으로 구한 값을 randomTextView에 세팅하여 화면에 보여주도록 하기")
 //        randomTextView.setText("randomValue")
         randomTextView.text = randomValue.toString() // 와 밑에 코드에서 갖고와서 좀 바꿧는데 이게 되네 ㅋㅋ ㅠ
@@ -57,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setJobAndLaunch() {
         // TODO("activity_main.xml에 작성되어 있는 spartaTextView를 findViewById를 사용하여 textView라는 TextView 타입의 변수에 할당하기)
-        val textView = findViewById<TextView>(R.id.spartaTextView)
+        val textView = spartTextView
 
         // findviewbyid 다른 사람들은 어떻게 하는지, 공식문서 sample
 
@@ -85,10 +92,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAnswerAndShowToast() {
         // TODO("activity_main.xml에 작성되어 있는 spartaTextView를 findViewById를 사용하여 textView라는 TextView 타입의 변수에 할당하기)
-        val textView = findViewById<TextView>(R.id.spartaTextView)
+        val textView = spartTextView
 
         // TODO("activity_main.xml에 작성되어 있는 textViewRandom을 findViewById를 사용하여 randomTextView라는 TextView 타입의 변수에 할당하기)
-        val randomTextView = findViewById<TextView>(R.id.textViewRandom)
+        val randomTextView = textViewRandom
 
         // TODO("if문 사용해보기 - 위에서 2개의 변수를 작성완료하고 나면 textView의 값과 randomTextView의 값이 같은지 다른지를 확인하여 Toast 띄우기")
         if (textView.text == randomTextView.text) { // view끼리 당연히 비교할 수가 d없지 이거는 text
